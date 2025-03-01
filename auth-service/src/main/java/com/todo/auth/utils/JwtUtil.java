@@ -1,15 +1,15 @@
-package com.todo.security;
+package com.todo.auth.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
 import java.util.Set;
+import java.util.UUID;
 
 @Component
 public class JwtUtil {
@@ -25,9 +25,11 @@ public class JwtUtil {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
     }
 
-    public String generateToken(String username, Set<String> roles) {
+    public String generateToken(UUID userId, String email, Set<String> roles) {
         return Jwts.builder()
-                .subject(username)
+                .subject(userId.toString())
+                .claim("userId", userId.toString())
+                .claim("email", email)
                 .claim("roles", roles)
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
@@ -41,7 +43,8 @@ public class JwtUtil {
         }
         try {
             Jwts.parser()
-                    .verifyWith(getSecretKey()).build()
+                    .verifyWith(getSecretKey())
+                    .build()
                     .parseSignedClaims(token);
             return true;
         } catch (JwtException e) {

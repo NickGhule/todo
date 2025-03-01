@@ -1,4 +1,7 @@
 package com.todo.auth.enums;
 
-public class AuthProvider {
+public enum AuthProvider {
+    GOOGLE,
+    GITHUB,
+    FACEBOOK;
 }

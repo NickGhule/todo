@@ -1,0 +1,37 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: auth-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/todo_auth
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 188083619656-13ctgfd31vu7rbgf877gfnougst2vsrm.apps.googleusercontent.com
+            client-secret: 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
+            scope: profile,email
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
+    org.springframework.security.oauth2.jwt: DEBUG
+    org.springframework.security.web.authentication: DEBUG
+    org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationProvider: DEBUG
