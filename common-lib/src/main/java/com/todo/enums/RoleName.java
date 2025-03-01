@@ -1,4 +1,4 @@
-package com.todo.auth.enums;
+package com.todo.enums;
 
 public enum RoleName {
     USER,
