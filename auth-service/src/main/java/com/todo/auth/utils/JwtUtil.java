@@ -1,13 +1,15 @@
-package com.todo.gateway.security;
+package com.todo.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
+import java.util.Set;
 
 @Component
 public class JwtUtil {
@@ -19,16 +21,17 @@ public class JwtUtil {
     private final String HEADER_STRING = "Authorization";
     private final long EXPIRATION_TIME = 1000*60*60; // 1 hour
 
-    private SecretKey getSecretKey(){
+    public SecretKey getSecretKey(){
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
     }
 
-    public String generateToken(String usernamne) {
+    public String generateToken(String username, Set<String> roles) {
         return Jwts.builder()
-                .subject(usernamne)
+                .subject(username)
+                .claim("roles", roles)
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .signWith(getSecretKey())
+                .signWith(getSecretKey(), Jwts.SIG.HS384)
                 .compact();
     }
 
