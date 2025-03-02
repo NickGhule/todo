@@ -16,7 +16,7 @@ public class JwtUtil {
 
 
     // TODO: Get the secret key from the environment variable
-    private final String SECRET_KEY = "your-secret-key-which-should-be-very-long-and-secure";
+    private final String SECRET_KEY = System.getenv("JWT_AUTH_SECRET_KEY");
     private final String TOKEN_PREFIX = "Bearer ";
     private final String HEADER_STRING = "Authorization";
     private final long EXPIRATION_TIME = 1000*60*60; // 1 hour

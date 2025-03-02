@@ -7,8 +7,8 @@ spring:
 
   datasource:
     url: jdbc:postgresql://localhost:5432/todo_auth
-    username: postgres
-    password: postgres
+    username: ${TODO_AUTH_DB_USERNAME}
+    password: ${TODO_AUTH_DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -24,8 +24,8 @@ spring:
       client:
         registration:
           google:
-            client-id: 188083619656-13ctgfd31vu7rbgf877gfnougst2vsrm.apps.googleusercontent.com
-            client-secret: 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
+            client-id: ${OAUTH2_CLIENT_ID_GOOGLE}
+            client-secret: ${OAUTH2_CLIENT_SECRET_GOOGLE}
             scope: profile,email
 
 logging:

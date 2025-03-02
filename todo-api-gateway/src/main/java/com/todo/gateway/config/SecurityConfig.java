@@ -17,7 +17,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Configuration
 @EnableWebFluxSecurity
 public class SecurityConfig {
-
+    private final String SECRET_KEY = System.getenv("JWT_AUTH_SECRET_KEY");
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         return http
@@ -37,7 +37,7 @@ public class SecurityConfig {
     @Bean
     public ReactiveJwtDecoder jwtDecoder() {
         return NimbusReactiveJwtDecoder
-                .withSecretKey(Keys.hmacShaKeyFor("your-secret-key-which-should-be-very-long-and-secure".getBytes()))
+                .withSecretKey(Keys.hmacShaKeyFor(System.getenv("JWT_AUTH_SECRET_KEY").getBytes()))
                 .macAlgorithm(MacAlgorithm.HS384)
                 .build();
     }
