@@ -15,7 +15,6 @@ import java.util.UUID;
 public class JwtUtil {
 
 
-    // TODO: Get the secret key from the environment variable
     private final String SECRET_KEY = System.getenv("JWT_AUTH_SECRET_KEY");
     private final String TOKEN_PREFIX = "Bearer ";
     private final String HEADER_STRING = "Authorization";
