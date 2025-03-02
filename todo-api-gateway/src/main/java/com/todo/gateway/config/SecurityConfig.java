@@ -37,7 +37,7 @@ public class SecurityConfig {
     @Bean
     public ReactiveJwtDecoder jwtDecoder() {
         return NimbusReactiveJwtDecoder
-                .withSecretKey(Keys.hmacShaKeyFor(System.getenv("JWT_AUTH_SECRET_KEY").getBytes()))
+                .withSecretKey(Keys.hmacShaKeyFor(SECRET_KEY.getBytes()))
                 .macAlgorithm(MacAlgorithm.HS384)
                 .build();
     }
