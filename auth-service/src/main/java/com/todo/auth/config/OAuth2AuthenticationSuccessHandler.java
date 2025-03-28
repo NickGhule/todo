@@ -1,7 +1,7 @@
 package com.todo.auth.config;
 
 import com.todo.auth.services.UserService;
-import com.todo.auth.utils.JwtUtil;
+import com.todo.security.JwtUtil;
 import com.todo.dtos.UserDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

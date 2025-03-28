@@ -1,0 +1,25 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: todo-task-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/todo_task
+    username: ${TODO_TASK_DB_USERNAME}
+    password: ${TODO_TASK_DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web : DEBUG

@@ -6,6 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class TodoTaskServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(TodoTaskServiceApplication.class);
+        SpringApplication.run(TodoTaskServiceApplication.class, args);
     }
 }

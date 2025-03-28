@@ -1,6 +1,7 @@
-package com.todo.models;
+package com.todo.todotaskservice.models;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.ForeignKey;
@@ -12,11 +13,11 @@ import lombok.Data;
 public class TaskTagId implements Serializable {
 
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_user_id"))
-    private Long userId;
+    private UUID userId;
 
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_task_id"))
-    private Long taskId;
+    private UUID taskId;
 
-    private String tag;
+    private String tagName;
 
 }

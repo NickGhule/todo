@@ -1,6 +1,6 @@
 package com.todo.auth.config;
 
-import com.todo.auth.utils.JwtUtil;
+import com.todo.security.JwtUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -32,9 +32,15 @@ public class SecurityConfig {
                         .requestMatchers("/auth/**", "/", "/error/**").permitAll() // Open authentication endpoints
                         .anyRequest().authenticated()
                 ).oauth2Login(oauth2 -> oauth2
-                        .successHandler(successHandler)// Redirect on successful login
+                        .successHandler(successHandler)
+//                        .authorizationEndpoint(endpoint ->
+//                                endpoint.baseUri("/oauth2/authorize"))
+//                        .redirectionEndpoint(endpoint ->
+//                                endpoint.baseUri("/oauth2/callback")) // Redirect on successful login
+
                 ) // OAuth2 login
 //                .formLogin(withDefaults()) // Support form login for testing
+
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(withDefaults()))
                 ;
 

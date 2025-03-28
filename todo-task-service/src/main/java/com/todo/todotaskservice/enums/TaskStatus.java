@@ -1,4 +1,4 @@
-package com.todo.enums;
+package com.todo.todotaskservice.enums;
 
 public enum TaskStatus {
     PENDING,

@@ -4,7 +4,7 @@ import com.todo.auth.dtos.UserLoginRequestDTO;
 import com.todo.auth.dtos.UserRegistrationRequestDTO;
 import com.todo.auth.services.UserService;
 import com.todo.dtos.UserDTO;
-import com.todo.auth.utils.JwtUtil;
+import com.todo.security.JwtUtil;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Collectors;

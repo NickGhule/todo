@@ -1,4 +1,4 @@
-package com.todo.auth.utils;
+package com.todo.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
